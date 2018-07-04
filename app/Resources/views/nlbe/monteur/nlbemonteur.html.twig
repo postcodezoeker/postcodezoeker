@@ -1,0 +1,120 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block title %}NL/BE - Monteurplanning{% endblock %}
+
+{% block content %}
+
+    {#Style voor de wrapper#}
+
+    <style>
+
+        .wrapper {
+        height:     130px;
+        min-height: 150px
+        margin:     10px;
+        padding:    10px;
+        }
+
+        table {
+          table-layout: fixed;
+        }
+
+
+    </style>
+
+    {#Heading#}
+
+    <div class="wrapper" style="background-color:#E9ECEF">
+        <div class="container">
+            <h3 class="display-4"><center>Monteurplanning Nederland/België</center></h3>
+            <center><h3><b>Levermethode: 14</b></h3><p></p></center>
+        </div>
+    </div>
+
+    {#Style voor de zoekformulier#}
+
+    <style>
+        .zoekformulier{
+
+        padding: 20px;
+        margin-top: 20px;
+        }
+
+    </style>
+
+    {#Zoekformulier#}
+
+    <div class= "zoekformulier">
+        <b>Voor Belgische postcodes, een B voor de postcode.</b>
+        <br></br>
+        <form>
+            <input name="q" value="{{ q }}" placeholder="Postcode" />
+            <button type="submit">Zoeken</button>
+        </form>
+    </div>
+
+    {#Tabellen, tr aanpassen, td laten staan#}
+
+    <div class="container-fluid">
+        <div class="row">
+            {% if q == "" %}
+               <div class="col-md-12" style="display:none"> 
+            {% else %}
+                <div class="col-md-12">
+                    <b>Planning van postcode: {{q}}</b>
+                    <p></p>
+            {% endif %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Postcode</th>
+                        <th scope="col">Week 27: 2 juli - 8 juli</th>
+                        <th scope="col">Week 28: 9 juli - 15 juli</th>
+                        <th scope="col">Week 29: 16 juli - 22 juli</th>
+                        <th scope="col">Week 30: 23 juli - 29 juli </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for postcode in nlbemonteur %}
+                    <tr>
+                        <th scope="row">{{ postcode.postcode }}</th>
+                        <td>{{ postcode.week2 }}</td>
+                        <td>{{ postcode.week3 }}</td>
+                        <td>{{ postcode.week4 }}</td>
+                        <td>{{ postcode.week5 }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Postcode</th>
+                        <th scope="col">Week 31: 30 juli - 5 augustus</th>
+                        <th scope="col">Week 32: 6 augustus - 12 augustus</th>
+                        <th scope="col">Week 33: 13 augustus - 19 augustus</th>
+                        <th scope="col">Week 34: 20 augustus - 26 augustus </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for postcode in nlbemonteur %}
+                    <tr>
+                        <th scope="row">{{ postcode.postcode }}</th>
+                        <td>{{ postcode.week6 }}</td>
+                        <td>{{ postcode.week7 }}</td>
+                        <td>{{ postcode.week8 }}</td>
+                        <td>{{ postcode.week9 }}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>                  
+            </div>
+        </div>
+        <hr>
+    </div>
+
+<center><b>Mocht er niets gevonden zijn, dan gaat het om een levering op aanvraag.<b><center>
+
+    
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3"><center>Postcodezoeker</center></h1>
+        </div>
+    </div>
+
+</br>
+</br>
+</br>
+</br>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-3">
+                <p><a class="btn btn-secondary" href="{{ url('nlbelevering')}}" role="button" target="_blank">NL/BE Leverplanning</a></p>
+            </div>
+            <div class="col-md-3">
+                <p><a class="btn btn-secondary" href="{{ url('duitslandlevering')}}" role="button" target="_blank">Duitsland Leverplanning</a></p>
+            </div>
+            <div class="col-md-3">
+                <p><a class="btn btn-secondary" href="{{ url('nlbemonteur')}}" role="button" target="_blank">NL/BE Monteurplanning</a></p>
+            </div>
+            <div class="col-md-3">
+                <p><a class="btn btn-secondary" href="{{ url('duitslandmonteur')}}" role="button" target="_blank">Duitsland Monteurplanning</a></p>
+            </div>
+            
+        </div>
+
+    </div>
+
+{% endblock %}
