@@ -1,0 +1,100 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block content %}
+
+    {#Style voor de wrapper#}
+
+    <style>
+
+        .wrapper {
+        height:     130px;
+        min-height: 150px
+        margin:     10px;
+        padding:    30px;
+        }
+
+        table {
+          table-layout: fixed;
+        }
+
+    </style>
+
+    {#Heading#}
+
+    <div class="wrapper" style="background-color:#E9ECEF">
+        <div class="container">
+            <h3 class="display-4"><center>Voorraadlijst week 27</center></h3>
+        </div>
+    </div>
+
+    {#Style voor de zoekformulier#}
+
+    <style>
+        .zoekformulier{
+
+        padding: 20px;
+        margin-top: 20px;
+        }
+        
+
+    </style>
+
+    {#Zoekformulier#}
+
+    <div class= "zoekformulier">
+        <form>
+            <input name="q" value="{{ q }}" placeholder="Artikelnummer of omschrijving" />
+            <button type="submit">Zoeken</button>
+        </form>
+    </div>
+
+    {#Tabellen, tr aanpassen, td laten staan#}
+
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Artikelnummer</th>
+                        <th>Omschrijving</th>
+                        <th>Adviesprijs</th>
+                        <th>Nu beschikbaar</th>
+                        <th>Eerste LEV Verwacht</th>
+                        <th>Beschikbaar na eerste LEV</th>
+                        <th>Tweede LEV Verwacht</th>
+                        <th>Beschikbaar na tweede LEV</th>
+                        <th>Derde LEV Verwacht</th>
+                        <th>Beschikbaar na derde LEV</th>
+                        <th>Vier de zomer %</th>
+                        <th>Vier de zomer €</th>
+                        <th>Opmerking</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for artikel in voorraad %}
+                    <tr>
+                        <th scope="row">{{ artikel.artikelnummer }}</th>
+                        <td>{{ artikel.omschrijving }}</td>
+                        <td>{{ artikel.adviesprijs }}</td>
+                        <td>{{ artikel.nuBeschikbaar }}</td>
+                        <td>{{ artikel.eersteLevVerwacht }}</td>
+                        <td>{{ artikel.beschikbaarNaEersteLev }}</td>
+                        <td>{{ artikel.tweedeLevVerwacht }}</td>
+                        <td>{{ artikel.beschikbaarNaTweedeLev }}</td>
+                        <td>{{ artikel.derdeLevVerwacht }}</td>
+                        <td>{{ artikel.beschikbaarNaDerdeLev }}</td>
+                        <td>{{ artikel.vierDeZomerProcent }}</td>
+                        <td>{{ artikel.vierDeZomerEuro }}</td>
+                        <td>{{ artikel.opmerking }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>              
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    
+{% endblock %}
